@@ -1,0 +1,72 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$pixel-width: 10px;
+$grid-width: $pixel-width * 100;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-collapse: collapse;
+}
+
+.palette {
+  text-align: center;
+
+  div {
+    height: 40px;
+    width: 100px;
+    border: 1px solid black;
+    display: inline-block;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  // #white { background-color: white; }
+  // #red { background-color: red; }
+  // #orange { background-color: orange; }
+  // #yellow { background-color: yellow; }
+  // #green { background-color: green; }
+  // #blue { background-color: blue; }
+  // #indigo { background-color: indigo; }
+  // #violet { background-color: violet; }
+  // #black { background-color: black; }
+}
+
+.white { background-color: white; }
+.red { background-color: red; }
+.orange { background-color: orange; }
+.yellow { background-color: yellow; }
+.green { background-color: green; }
+.blue { background-color: blue; }
+.indigo { background-color: indigo; }
+.violet { background-color: violet; }
+.black { background-color: black; }
+
+.selected {
+  border: 4px solid skyblue!important;
+}
+
+.container {
+  margin: 0 auto;
+  grid-column-gap: 0;
+  display: grid;
+  grid-template-columns: repeat(100, $pixel-width);
+  border: 1px solid black;
+  width: $grid-width;
+
+  div {
+    width: $pixel-width;
+    height: $pixel-width;
+
+    &:hover {
+      border: 1px solid skyblue;
+    }
+  }
+
+
+}

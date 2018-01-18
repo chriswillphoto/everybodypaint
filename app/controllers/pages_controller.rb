@@ -1,9 +1,10 @@
 class PagesController < ApplicationController
 
-  $users = ['one', 'two']
+  # $users = ['one', 'two']
 
   def index
     @art = Art.last
+    # raise 'hell'
   end
 
   def update

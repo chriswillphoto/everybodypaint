@@ -1,16 +1,16 @@
 class PagesController < ApplicationController
 
-  $users = ['one', 'two']
 
   def index
     @art = Art.last
-    # raise 'hell'
+
   end
 
   def update
     @art = Art.last
     @art.update :data => params[:data]
-    $users < 'another'
+    user = Lineup.find_by :user => @current_user.username
+    user.destroy
   end
 
   def show

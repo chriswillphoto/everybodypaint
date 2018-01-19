@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  # $users = ['one', 'two']
+  $users = ['one', 'two']
 
   def index
     @art = Art.last
@@ -10,6 +10,7 @@ class PagesController < ApplicationController
   def update
     @art = Art.last
     @art.update :data => params[:data]
+    $users < 'another'
   end
 
   def show

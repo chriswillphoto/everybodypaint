@@ -19,7 +19,9 @@ class SessionController < ApplicationController
 
   def destroy
     user = Lineup.find_by :user => @current_user.username
-    user.destroy
+    unless user.nil?
+      user.destroy
+    end
     session[:user_id] = nil
     redirect_to root_path
   end

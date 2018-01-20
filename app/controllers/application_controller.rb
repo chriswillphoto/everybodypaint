@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
     end
 
     def update_queue
-      $lineup = Lineup.all
+      $lineup = Lineup.all.map(&:user).join(', ')
+      $art = Art.last
+      ActionCable.server.broadcast 'queue_channel',
+                                   content:  $lineup,
+                                   art: $art
+      # QueueChannel.broadcast_to($lineup, 'yes')
     end
 end

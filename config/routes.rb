@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   post '/login' => "session#create"
   delete '/login' => "session#destroy"
 
+  get '/lineup' => "pages#lineup"
+
+  mount ActionCable.server, at: '/cable'
 end

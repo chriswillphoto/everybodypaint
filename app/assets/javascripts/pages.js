@@ -1,13 +1,44 @@
 let color = "black";
+let line = ''
+let currentuser;
 
 $(document).ready(function() {
   let fragment = document.createDocumentFragment()
 
-  // $.ajax({
-  //   url:'http://localhost:3000/current.json'
-  // }).done(function(res){
-  //   $('.container').html(res.data)
-  // })
+  $(".addtolineup").on('click', function() {
+    $.ajax({url: '/lineup'})
+  })
+
+  var targetNode = document.getElementById('queue');
+
+  // Options for the observer (which mutations to observe)
+  var config = { attributes: true, childList: true };
+
+  // Callback function to execute when mutations are observed
+  var callback = function(mutationsList) {
+      for(var mutation of mutationsList) {
+          if (mutation.type == 'childList') {
+              console.log('A child node has been added or removed.');
+              console.log(mutation.target.innerText)
+              line = mutation.target.innerText
+          }
+          else if (mutation.type == 'attributes') {
+              console.log('The ' + mutation.attributeName + ' attribute was modified.');
+          }
+      }
+  };
+
+  // Create an observer instance linked to the callback function
+  var observer = new MutationObserver(callback);
+
+  // Start observing the target node for configured mutations
+  observer.observe(targetNode, config);
+
+  $.ajax({
+    url:'http://localhost:3000/current.json'
+  }).done(function(res){
+    $('.container').html(res.data)
+  })
 
 
   // for (var i = 0; i < 10000; i++) {
@@ -16,12 +47,15 @@ $(document).ready(function() {
   // $('.container').append(fragment)
 
   $('.container').on('click', 'div', function() {
-    $(this).removeClass().addClass(color)
-    $.ajax({
-      url: 'http://localhost:3000/',
-      data: {'data': $(".container").html()},
-      method: 'PUT'
-    })
+    if(currentuser === $('#queue').text().trim().split(', ')[0]) {
+      $(this).removeClass().addClass(color)
+      $.ajax({
+        url: 'http://localhost:3000/',
+        data: {'data': $(".container").html()},
+        method: 'PUT'
+      })
+      console.log('yes')
+    }
   })
 
   $('.palette div').on('click', function() {

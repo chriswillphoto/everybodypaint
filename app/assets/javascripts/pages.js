@@ -35,7 +35,7 @@ $(document).ready(function() {
   observer.observe(targetNode, config);
 
   $.ajax({
-    url:'http://localhost:3000/current.json'
+    url:'/current.json'
   }).done(function(res){
     $('.container').html(res.data)
   })
@@ -53,7 +53,7 @@ $(document).ready(function() {
     if(currentuser === $('#queue').text().trim().split(', ')[0]) {
       $(this).removeClass().addClass(color)
       $.ajax({
-        url: 'http://localhost:3000/',
+        url: '/',
         data: {'data': $(".container").html()},
         method: 'PUT'
       }).done(function() {

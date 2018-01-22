@@ -12,6 +12,12 @@ $grid-width: $pixel-width * 100;
   border-collapse: collapse;
 }
 
+header {
+  background-color: black;
+  color: white;
+  margin-bottom: 20px;
+}
+
 .palette {
   text-align: center;
 

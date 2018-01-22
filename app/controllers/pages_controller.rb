@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  after_action :update_queue, :only => [:lineup, :update]
+  before_action :update_queue, :only => [:index]
 
   def index
     @art = Art.last
@@ -13,7 +13,6 @@ class PagesController < ApplicationController
     end
     user = Lineup.find_by :user => @current_user.username
     user.destroy
-    redirect_to root_path
   end
 
   def show
@@ -25,5 +24,13 @@ class PagesController < ApplicationController
 
   def lineup
     Lineup.create :user => @current_user.username
+    # a = Lineup.first
+    # p a
+    # update_queue
+    # sleep 10
+    # if Lineup.first == a
+    #   Lineup.first.destroy
+    # end
+    # p 'bybeye'
   end
 end

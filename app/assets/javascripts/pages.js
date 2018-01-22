@@ -40,6 +40,9 @@ $(document).ready(function() {
     $('.container').html(res.data)
   })
 
+  // if(currentuser === line.split(', ')[0]){
+  //   console.log('yes')
+  // }
 
   // for (var i = 0; i < 10000; i++) {
   //   $("<div />").appendTo(fragment)
@@ -53,8 +56,9 @@ $(document).ready(function() {
         url: 'http://localhost:3000/',
         data: {'data': $(".container").html()},
         method: 'PUT'
+      }).done(function() {
+        window.location.reload()
       })
-      console.log('yes')
     }
   })
 

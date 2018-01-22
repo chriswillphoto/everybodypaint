@@ -8,6 +8,7 @@ App.queue = App.cable.subscriptions.create "QueueChannel",
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
     $('#queue').text(data.content)
-    $('.container').html(data.art.data)
+    $('.container').html(data.art.data.trim())
+    # console.log(data)
     # $('.queue').text(data.content.map( (i) => return i))
     # $('.queue').attr('data-qu', JSON.stringify(data.content))

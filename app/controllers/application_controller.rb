@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
 
-  before_action :fetch_user, :update_queue
+  before_action :fetch_user
+  after_action :update_queue
+
+
 
     private
     def fetch_user
@@ -17,4 +20,16 @@ class ApplicationController < ActionController::Base
                                    art: $art
       # QueueChannel.broadcast_to($lineup, 'yes')
     end
+
+    # def linetimeout
+    #   if Lineup.first
+    #     lineupcheck = Lineup.first
+    #     sleep 10
+    #     secondcheck = Lineup.first
+    #     if lineupcheck == secondcheck
+    #       Lineup.first.destroy
+    #     end
+    #   end
+    #   update_queue
+    # end
 end

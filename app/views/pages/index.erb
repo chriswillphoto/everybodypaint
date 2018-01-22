@@ -1,3 +1,35 @@
+    <header>
+      <h3>Welcome to pixd</h3>
+      <% if @current_user %>
+        <div class="logout">
+          <%= link_to "Sign Out of #{@current_user.username}", '/login', :class => "text-center", :method => "delete" %>
+        </div>
+      <% else %>
+        <div class="login">
+
+          <div class="signup">
+            <h4>Sign Up</h4>
+            <form class="" action="/users" method="post">
+              <input type="text" name="user[username]" value="">
+              <input type="password" name="user[password]" value="">
+              <input type="password" name="user[password_confirmation]" value="">
+              <button>Sign Up</button>
+            </form>
+          </div>
+
+          <div class="signin">
+            <h4>Sign In</h4>
+            <form class="" action="/login" method="post">
+              <input type="text" name="username" value="">
+              <input type="password" name="password" value="">
+              <button>Sign In</button>
+            </form>
+          </div>
+
+        </div>
+      <% end %>
+    </header>
+
     <div class="palette">
       <div class="white"></div>
       <div class="red"></div>
@@ -16,20 +48,9 @@
     </div>
 
 
-    <h4>Sign Up</h4>
-    <form class="" action="/users" method="post">
-      <input type="text" name="user[username]" value="">
-      <input type="password" name="user[password]" value="">
-      <input type="password" name="user[password_confirmation]" value="">
-      <button>Submit</button>
-    </form>
 
-    <h4>Sign In</h4>
-    <form class="" action="/login" method="post">
-      <input type="text" name="username" value="">
-      <input type="password" name="password" value="">
-      <button></button>
-    </form>
+
+
     <div id="queue">
       <%= $lineup  %>
     </div>
@@ -41,7 +62,6 @@
       })
 
       </script>
-      <%= link_to "Sign Out of #{@current_user.username}", '/login', :class => "text-center", :method => "delete" %>
       <% if !$lineup.include? @current_user.username %>
         <button class="addtolineup">Rejoin The Queue?</button>
       <% end %>

@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Art.destroy_all
+Lineup.destroy_all
+
+Art.create :data => "<div></div>"*10000

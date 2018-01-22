@@ -6,7 +6,7 @@ $(document).ready(function() {
   let fragment = document.createDocumentFragment()
 
   $(".addtolineup").on('click', function() {
-    $.ajax({url: '/lineup'})
+    $.ajax({url: 'http://pixeldeli.herokuapp.com/lineup'})
   })
 
   var targetNode = document.getElementById('queue');
@@ -53,7 +53,7 @@ $(document).ready(function() {
     if(currentuser === $('#queue').text().trim().split(', ')[0]) {
       $(this).removeClass().addClass(color)
       $.ajax({
-        url: '/',
+        url: 'http://pixeldeli.herokuapp.com/',
         data: {'data': $(".container").html()},
         method: 'PUT'
       }).done(function() {

@@ -30,9 +30,14 @@
       <% end %>
     </header>
 
-    <div id="queue">
-      <%= $lineup  %>
+    <div class="queue-box">
+      <div id="queue">
+        <h6>The queue: </h6>
+        <%= $lineup  %>
+      </div>
+      <button class="movealong">Person up front taking too long?</button>
     </div>
+
 
     <div class="palette">
       <div class="white"></div>

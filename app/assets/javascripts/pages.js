@@ -11,6 +11,10 @@ $(document).ready(function() {
     $.ajax({url: '/lineup'})
   })
 
+  $(".movealong").on('click', function() {
+    $.ajax({url: '/update'})
+  })
+
 $(".login div h4").on('click', function() {
   if( $(this).siblings('form').css('display') === "none" ) {
     $(this).siblings().css('display', 'inline-block')

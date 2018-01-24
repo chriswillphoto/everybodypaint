@@ -23,7 +23,10 @@ class PagesController < ApplicationController
   end
 
   def lineup
-    Lineup.create :user => @current_user.username
+    a = Lineup.all.map(&:user)
+    if !a.include? @current_user.username
+      Lineup.create :user => @current_user.username
+    end
     # a = Lineup.first
     # p a
     # update_queue
@@ -33,4 +36,11 @@ class PagesController < ApplicationController
     # end
     # p 'bybeye'
   end
+
+  def hurry
+    if Time.now - Lineup.first.created_at > 60
+      Lineup.first.destroy
+    end
+  end
+
 end

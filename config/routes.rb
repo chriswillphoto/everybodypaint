@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   put '/' => "pages#update"
   get '/current' => "pages#show"
   post '/users' => "users#create"
+  get '/update' => "pages#hurry"
 
   post '/login' => "session#create"
   delete '/login' => "session#destroy"

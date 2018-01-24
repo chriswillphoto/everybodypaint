@@ -8,8 +8,9 @@ $(document).ready(function() {
   let fragment = document.createDocumentFragment()
 
   $(".addtolineup").on('click', function() {
-    if(line.indexOf(currentuser) === -1)
-    $.ajax({url: '/lineup'})
+    if(line.indexOf(currentuser) === -1){
+      $.ajax({url: '/lineup'})
+    }
   })
 
   $(".movealong").on('click', function() {

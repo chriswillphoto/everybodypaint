@@ -38,8 +38,10 @@ class PagesController < ApplicationController
   end
 
   def hurry
-    if Time.now - Lineup.first.created_at > 60
-      Lineup.first.destroy
+    unless Lineup.first.nil?
+      if Time.now - Lineup.first.created_at > 60
+        Lineup.first.destroy
+      end
     end
   end
 

@@ -36,6 +36,7 @@
         <%= $lineup  %>
       </div>
       <button class="movealong">Person up front taking too long?</button>
+      <button class="addtolineup">Rejoin The Queue?</button>
     </div>
 
 
@@ -66,7 +67,4 @@
       })
 
       </script>
-      <% if !$lineup.include? @current_user.username %>
-        <button class="addtolineup">Rejoin The Queue?</button>
-      <% end %>
     <% end %>

@@ -1,13 +1,23 @@
 let color = "black";
 let line = ''
 let currentuser;
+let signinshow = false
+let signupshow = false
 
 $(document).ready(function() {
   let fragment = document.createDocumentFragment()
 
   $(".addtolineup").on('click', function() {
-    $.ajax({url: 'http://pixeldeli.herokuapp.com/lineup'})
+    $.ajax({url: '/lineup'})
   })
+
+$(".login div h4").on('click', function() {
+  if( $(this).siblings('form').css('display') === "none" ) {
+    $(this).siblings().css('display', 'inline-block')
+  }else{
+    $(this).siblings().css('display', 'none')
+  }
+})
 
   var targetNode = document.getElementById('queue');
 
@@ -53,7 +63,7 @@ $(document).ready(function() {
     if(currentuser === $('#queue').text().trim().split(', ')[0]) {
       $(this).removeClass().addClass(color)
       $.ajax({
-        url: 'http://pixeldeli.herokuapp.com/',
+        url: '/',
         data: {'data': $(".container").html()},
         method: 'PUT'
       }).done(function() {

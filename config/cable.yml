@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:9facec62605b78ca8b72a9f6e6fb03a4@soldierfish.redistogo.com:10637/
   channel_prefix: everybodypaint_production

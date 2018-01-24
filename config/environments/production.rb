@@ -73,6 +73,10 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
+  # WEBSOCKET
+  config.web_socket_server_url = "wss://pixeldeli.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://pixeldeli.herokuapp.com', 'http://pixeldeli.herokuapp.com']
+
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
